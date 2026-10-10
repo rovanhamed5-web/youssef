@@ -309,33 +309,70 @@ function showItems(type) {
     if (!dialog.open) dialog.showModal();
 }
 
+// function searchGame() {
+//     const search = document.getElementById("gameSearch");
+//     if (!search) return;
+
+//     const name = search.value.toLowerCase().trim();
+
+//     const pages = {
+//         "fc 26": "fc26.html",
+//         "fc26": "fc26.html",
+//         "spider-man 2": "sp.html",
+//         "spiderman 2": "sp.html",
+//         "gang beasts": "gng.html",
+//         "it takes two": "ittak.html",
+//         "god of war": "gow.html",
+//         "god of war ragnarok": "gow.html",
+//         "gta": "GTA.html",
+//         "gta 5": "GTA.html",
+//         "cuphead": "ch.html",
+//         "minecraft": "min.html",
+//         "ps5": "lec6hw.html"
+//     };
+
+//     if (pages[name]) {
+//         window.location.href = "./" + pages[name];
+//     } else {
+//         document.getElementById("shop-message").textContent =
+//             "Game not found.";
+//     }
+// }
 function searchGame() {
-    const search = document.getElementById("gameSearch");
-    if (!search) return;
+    const input = document.getElementById("gameSearch");
 
-    const name = search.value.toLowerCase().trim();
+    // Ignore spaces, punctuation, and capital letters.
+    const normalize = text =>
+        text.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-    const pages = {
-        "fc 26": "fc26.html",
-        "fc26": "fc26.html",
-        "spider-man 2": "sp.html",
-        "spiderman 2": "sp.html",
-        "gang beasts": "gng.html",
-        "it takes two": "ittak.html",
-        "god of war": "gow.html",
-        "god of war ragnarok": "gow.html",
-        "gta": "GTA.html",
-        "gta 5": "GTA.html",
-        "cuphead": "ch.html",
-        "minecraft": "min.html",
-        "ps5": "lec6hw.html"
-    };
+    const search = normalize(input.value);
 
-    if (pages[name]) {
-        window.location.href = "./" + pages[name];
+    const games = [
+        { names: ["FC 26", "EA Sports FC 26"], page: "fc26.html" },
+        { names: ["Spider-Man 2", "Spiderman 2"], page: "sp.html" },
+        { names: ["Gang Beasts"], page: "gng.html" },
+        { names: ["It Takes Two"], page: "ittak.html" },
+        { names: ["God of War", "God of War Ragnarok"], page: "gow.html" },
+        { names: ["GTA", "GTA 5", "Grand Theft Auto V"], page: "GTA.html" },
+        { names: ["Cuphead"], page: "ch.html" },
+        { names: ["Minecraft"], page: "min.html" },
+        { names: ["PS5", "PlayStation 5"], page: "lec6hw.html" }
+    ];
+
+    if (!search) {
+        alert("Type a game name first.");
+        input.focus();
+        return;
+    }
+
+    const game = games.find(game =>
+        game.names.some(name => normalize(name) === search)
+    );
+
+    if (game) {
+        window.location.href = "./" + game.page;
     } else {
-        document.getElementById("shop-message").textContent =
-            "Game not found.";
+        alert("Game not found. Check the name and try again.");
     }
 }
 
