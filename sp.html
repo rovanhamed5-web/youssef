@@ -58,7 +58,19 @@
                     <span>4.9 (567 reviews)</span>
                 </div>
 
-                <h2>80$</h2>
+                <select id="accountType" onchange="updateProductPrice()">
+    <option value="full" data-price="1400">
+        Full Account — 2,200 EGP
+    </option>
+    <option value="primary" data-price="1000">
+        Primary — 1,700 EGP
+    </option>
+    <option value="secondary" data-price="800">
+        Secondary — 1,300 EGP
+    </option>
+</select>
+
+<h2 id="productPrice">2,200 EGP</h2>
 
                 <p>
                     The sequel features two main playable characters,
