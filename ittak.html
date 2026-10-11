@@ -46,7 +46,19 @@
                 <span>4.8 (124 reviews)</span>
             </div>
 
-            <h2>25$</h2>
+           <select id="accountType" onchange="updateProductPrice()">
+    <option value="full" data-price="1400">
+        Full Account — 900 EGP
+    </option>
+    <option value="primary" data-price="1000">
+        Primary — 700 EGP
+    </option>
+    <option value="secondary" data-price="800">
+        Secondary — 500 EGP
+    </option>
+</select>
+
+<h2 id="productPrice">900 EGP</h2>
 
             <p>
                 It Takes Two is an action-adventure video game
