@@ -102,9 +102,24 @@
 //     document.getElementById("main").style.display = "none";
 // };
 // Saved items stay in this browser.
+// function getItems(key) {
+//     try {
+//         return JSON.parse(localStorage.getItem(key)) || [];
+//     } catch {
+//         return [];
+//     }
+// }
 function getItems(key) {
     try {
-        return JSON.parse(localStorage.getItem(key)) || [];
+        const items = JSON.parse(localStorage.getItem(key)) || [];
+
+        if (!Array.isArray(items)) return [];
+
+        return items.filter(item =>
+            item &&
+            typeof item.price === "number" &&
+            Number.isFinite(item.price)
+        );
     } catch {
         return [];
     }
