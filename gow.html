@@ -57,9 +57,19 @@
                     ★★★★★
                     <span>5.0 (930 reviews)</span>
                 </div>
+<select id="accountType" onchange="updateProductPrice()">
+    <option value="full" data-price="1400">
+        Full Account — 2,000 EGP
+    </option>
+    <option value="primary" data-price="1000">
+        Primary — 1,500 EGP
+    </option>
+    <option value="secondary" data-price="800">
+        Secondary — 1000 EGP
+    </option>
+</select>
 
-                <h2>70$</h2>
-
+<h2 id="productPrice">2,000 EGP</h2>
                 <p>
                     Kratos and Atreus must journey to each of the Nine Realms
                     in search of answers as Asgardian forces prepare for a
