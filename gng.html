@@ -58,7 +58,19 @@
                     <span>4.8 (344 reviews)</span>
                 </div>
 
-                <h2>40$</h2>
+               <select id="accountType" onchange="updateProductPrice()">
+    <option value="full" data-price="1400">
+        Full Account — 1,200 EGP
+    </option>
+    <option value="primary" data-price="1000">
+        Primary — 700 EGP
+    </option>
+    <option value="secondary" data-price="800">
+        Secondary — 400 EGP
+    </option>
+</select>
+
+<h2 id="productPrice">1,200 EGP</h2>
 
                 <p>
                     In the game, players fight each other as floppy,
