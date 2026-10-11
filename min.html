@@ -60,7 +60,19 @@
                     <span>5.0 (678 reviews)</span>
                 </div>
 
-                <h2>15$</h2>
+               <select id="accountType" onchange="updateProductPrice()">
+    <option value="full" data-price="1400">
+        Full Account — 700 EGP
+    </option>
+    <option value="primary" data-price="1000">
+        Primary — 500 EGP
+    </option>
+    <option value="secondary" data-price="800">
+        Secondary — 350 EGP
+    </option>
+</select>
+
+<h2 id="productPrice">700 EGP</h2>
 
                 <p>
                     Minecraft is a 3D sandbox adventure game developed by
