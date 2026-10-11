@@ -59,8 +59,19 @@
                     <span>5.0 (2109 reviews)</span>
                 </div>
 
-                <h2>599$</h2>
+              <select id="accountType" onchange="updateProductPrice()">
+    <option value="full" data-price="35,000">
+        CD version — 35,000 EGP
+    </option>
+    <option value="primary" data-price="30,000">
+        digital version — 30,000 EGP
+    </option>
+    <option value="secondary" data-price="28,000">
+        Secondary — 28,000 EGP
+    </option>
+</select>
 
+<h2 id="productPrice">35,000 EGP</h2>
                 <p>
                     Experience the power of the PlayStation 5 Slim with
                     ultra-fast loading, stunning 4K visuals, ray tracing,
