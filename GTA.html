@@ -58,7 +58,19 @@
                     <span>5.0 (1309 reviews)</span>
                 </div>
 
-                <h2>50$</h2>
+               <select id="accountType" onchange="updateProductPrice()">
+    <option value="full" data-price="1400">
+        Full Account — 1,100 EGP
+    </option>
+    <option value="primary" data-price="1000">
+        Primary — 900 EGP
+    </option>
+    <option value="secondary" data-price="800">
+        Secondary — 600 EGP
+    </option>
+</select>
+
+<h2 id="productPrice">1,400 EGP</h2>
 
                 <p>
                     Grand Theft Auto V is an open-world, action-adventure
