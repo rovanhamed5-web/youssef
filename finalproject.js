@@ -135,16 +135,63 @@ function decreaseQuantity() {
     updateQuantity();
 }
 
+// function getProduct() {
+//     const info = document.querySelector(".product-info");
+//     if (!info) return null;
+
+//     return {
+//         id: location.pathname.split("/").pop(),
+//         name: info.querySelector("h1").textContent.trim(),
+//         price: Number(
+//             info.querySelector("h2").textContent.replace(/[^0-9.]/g, "")
+//         )
+//     };
+// }
+function updateProductPrice() {
+    const select = document.getElementById("accountType");
+    const price = document.getElementById("productPrice");
+
+    if (!select || !price) return;
+
+    const option = select.options[select.selectedIndex];
+
+    price.textContent =
+        Number(option.dataset.price).toLocaleString("en-US") + " EGP";
+}
+
 function getProduct() {
     const info = document.querySelector(".product-info");
     if (!info) return null;
 
+    const gameName = info.querySelector("h1").textContent.trim();
+    const pageId = location.pathname.split("/").pop();
+    const select = document.getElementById("accountType");
+
+    if (select) {
+        const option = select.options[select.selectedIndex];
+
+        const accountNames = {
+            full: "Full Account",
+            primary: "Primary",
+            secondary: "Secondary"
+        };
+
+        return {
+            id: pageId + ":" + option.value,
+            name: gameName + " — " + accountNames[option.value],
+            price: Number(option.dataset.price),
+            currency: "EGP"
+        };
+    }
+
+    // Other games keep working until you add their selectors.
     return {
-        id: location.pathname.split("/").pop(),
-        name: info.querySelector("h1").textContent.trim(),
+        id: pageId,
+        name: gameName,
         price: Number(
             info.querySelector("h2").textContent.replace(/[^0-9.]/g, "")
-        )
+        ),
+        currency: "EGP"
     };
 }
 
@@ -248,7 +295,9 @@ function showItems(type) {
         name.textContent = item.name;
 
         const price = document.createElement("span");
-        price.textContent = `$${item.price.toFixed(2)}`;
+        // price.textContent = `$${item.price.toFixed(2)}`;
+        price.textContent =
+    item.price.toLocaleString("en-US") + " EGP";
 
         row.append(name, price);
 
@@ -296,18 +345,34 @@ function showItems(type) {
 
         list.appendChild(row);
     });
-
     document.getElementById("cart-total").textContent =
         type === "cart"
-            ? "Total: $" + items.reduce(
-                (total, item) =>
-                    total + item.price * item.quantity,
+            ? "Total: " + items.reduce(
+                (total, item) => total + item.price * item.quantity,
                 0
-            ).toFixed(2)
+            ).toLocaleString("en-US") + " EGP"
             : "";
 
     if (!dialog.open) dialog.showModal();
 }
+//     document.getElementById("cart-total").textContent =
+//         type === "cart"
+//             ? "Total: $" + items.reduce(
+//                 (total, item) =>
+//                     total + item.price * item.quantity,
+//                 0
+//             ).toFixed(2)
+//             : "";
+
+//     if (!dialog.open) dialog.showModal();
+// }
+    // document.getElementById("cart-total").textContent =
+    // type === "cart"
+    //     ? "Total: " + items.reduce(
+    //         (total, item) => total + item.price * item.quantity,
+    //         0
+    //     ).toLocaleString("en-US") + " EGP"
+    //     : "";
 
 // function searchGame() {
 //     const search = document.getElementById("gameSearch");
