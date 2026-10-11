@@ -289,4 +289,15 @@ h3{
     margin-top: 12px;
     background: white;
     border: 1px solid #ccc;
+} 
+#accountType {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    color: #222;
+    font-size: 16px;
 }
